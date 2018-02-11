@@ -4,7 +4,7 @@
 #include <FirebaseError.h>
 #include <FirebaseHttpClient.h>
 #include <FirebaseObject.h>
-
+#include <Servo.h>
 #include <ESP8266WiFi.h>
 
 
@@ -15,6 +15,7 @@
 #define FIREBASE_KEY "NGgVOJ4iKLlp5fM00v6m2cCaaQ3DqEkbBsyBY0RK"
 #define D0 16
 #define LED D0
+Servo myservo;
 void setup() {
   Serial.begin(9600);
   Serial.println(WiFi.localIP());
@@ -31,7 +32,8 @@ void setup() {
   // Do something
 
    Firebase.begin(FIREBASE_HOST, FIREBASE_KEY);
-  pinMode(13, OUTPUT);
+  //pinMode(13, OUTPUT);
+  myservo.attach(13);
 }
 
 void loop() {
@@ -39,7 +41,16 @@ void loop() {
 
    int name = Firebase.getInt("light/switch");
 Serial.print("Switch : ");
- digitalWrite(13, name);
-  delay(500);
+// digitalWrite(13, name);
+//  delay(500);
 Serial.println(name);
+if(name == 1){
+  myservo.write(0);
+delay(1000);
+myservo.write(90);
+delay(1000);
+myservo.write(180);
+delay(1000);
+myservo.writeMicroseconds(1500);
+  }
 }
