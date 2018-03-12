@@ -45,12 +45,20 @@ Serial.print("Switch : ");
 //  delay(500);
 Serial.println(name);
 if(name == 1){
-  myservo.write(0);
+  myservo.write(90);
+delay(500);
+myservo.write(0);
 delay(1000);
-myservo.write(90);
+  myservo.write(90);
+delay(500);
+myservo.write(0);
 delay(1000);
-myservo.write(180);
+  myservo.write(90);
+delay(500);
+myservo.write(0);
 delay(1000);
+
+Firebase.setInt("light/switch", 0);
 myservo.writeMicroseconds(1500);
   }
 }
