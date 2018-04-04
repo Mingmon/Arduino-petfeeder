@@ -47,7 +47,7 @@ Serial.println(name);
 if(name > 0){
   for(int i = 0;i<name;i++){
       myservo.write(90);
-      delay(500);
+      delay(1500);
       myservo.write(0);
       delay(1000);
     }
