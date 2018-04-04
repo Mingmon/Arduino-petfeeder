@@ -8,8 +8,8 @@
 #include <ESP8266WiFi.h>
 
 
-#define WIFI_SSID       "JIA-2409"
-#define WIFI_PASSWORD   "27791462"
+#define WIFI_SSID       "KAT"
+#define WIFI_PASSWORD   "kathaleeya"
 
 #define FIREBASE_HOST "testproject-abf8e.firebaseio.com"
 #define FIREBASE_KEY "NGgVOJ4iKLlp5fM00v6m2cCaaQ3DqEkbBsyBY0RK"
@@ -44,20 +44,13 @@ Serial.print("Switch : ");
 // digitalWrite(13, name);
 //  delay(500);
 Serial.println(name);
-if(name == 1){
-  myservo.write(90);
-delay(500);
-myservo.write(0);
-delay(1000);
-  myservo.write(90);
-delay(500);
-myservo.write(0);
-delay(1000);
-  myservo.write(90);
-delay(500);
-myservo.write(0);
-delay(1000);
-
+if(name > 0){
+  for(int i = 0;i<name;i++){
+      myservo.write(90);
+      delay(500);
+      myservo.write(0);
+      delay(1000);
+    }
 Firebase.setInt("light/switch", 0);
 myservo.writeMicroseconds(1500);
   }
